@@ -1,12 +1,8 @@
 ﻿@model Bigschool.ViewModel.CourseViewModel
-
-    
-
-
 <h2>Create</h2>
 @using (Html.BeginForm("Create", "Courses"))
 {
-
+        @Html.AntiForgeryToken()
 <form>
     <div class="form-group">
         @Html.LabelFor(m => m.Place)
@@ -28,11 +24,15 @@
         @Html.DropDownListFor(m => m.Category, new SelectList(Model.categories, "Id", "Name"), new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Category)
     </div>
+    <div class="form-group"></div>
+    <div class="form-group"></div>
+    <div class="form-group"></div>
+    <div class="form-group"></div>
     <button type="submit" value=" save" class="btn btn-primary">Save</button>
-    <div class="form-group"></div>
-    <div class="form-group"></div>
-    <div class="form-group"></div>
-    <div class="form-group"></div>
 </form>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval");    
 }
 
